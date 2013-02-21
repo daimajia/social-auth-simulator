@@ -21,4 +21,4 @@ weibo-simulator
  
  php文件模拟了用户的登陆，对app的授权，以及post获取access_token请求
  
- 即将添加人人模拟
+ 即将添加人人模拟,借鉴小黄鸡
