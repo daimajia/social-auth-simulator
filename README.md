@@ -20,3 +20,5 @@ weibo-simulator
  只要在`sina.py`中，修改您的微博用户名、密码、app_key,app_secret,callback_rui，而后运行`sina.py`即可完成授权，并且获取到access_token。
  
  php文件模拟了用户的登陆，对app的授权，以及post获取access_token请求
+ 
+ 即将添加人人模拟
