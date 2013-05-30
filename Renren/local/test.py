@@ -1,4 +1,5 @@
 from renren import APIClient
 
-api = APIClient(235872,'8c8dcf5bc1ae4e23b5ee5f56eb346f5f','68e717e34ce34c2ca2f67c7732f4b5c3','http://baidu.com','xuanqinanhai@i.ua','410831497')
+api = APIClient('你的app Id','你的 app Key','你的app secret','你的app redirect uri','人人账号','人人密码')
+
 print api.get_access_token()
