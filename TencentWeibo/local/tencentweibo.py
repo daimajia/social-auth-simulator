@@ -4,7 +4,7 @@ import urllib2,httplib
 import cookielib
 from bs4 import BeautifulSoup
 
-class TencentWeiboClient(object):
+class TencentWeiboAutoAuth(object):
 	'''
 	腾讯微博自动认证客户端
 	曲线救国，从wap端下手更容易
@@ -58,7 +58,9 @@ class TencentWeiboClient(object):
 		self.code = htmlcontent[code_start+5:code_start+5+32]
 		self.openid = htmlcontent[openid_start+7:openid_start+7+32]
 		self.openkey = htmlcontent[openkey_start+8:openkey_start+8+32]
-		
+	
+	def get_code(self):
+		return self.code
 
 	def get_access_token(self):
 		request_url = 'https://open.t.qq.com/cgi-bin/oauth2/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&grant_type=authorization_code&code=%s'
