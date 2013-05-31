@@ -4,7 +4,7 @@ import urllib2,httplib
 import cookielib
 from bs4 import BeautifulSoup
 
-class APIClient(object):
+class RenrenAutoAuth(object):
 	'''
 	人人自动认证授权
 	'''
