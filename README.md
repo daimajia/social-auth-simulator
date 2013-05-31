@@ -28,7 +28,7 @@ App想要获取某个用户的授权，得到`access_token`，而后获取用户
 
 ```python
 
-from renren import APIClient
+from renren import RenrenAutoAuth
 
 api = RenrenAutoAuth('你的app Id','你的 app Key','你的app secret','你的app redirect uri','人人账号','人人密码')
 
