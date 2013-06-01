@@ -8,7 +8,7 @@ class RenrenAutoAuth(object):
 	'''
 	人人自动认证授权
 	'''
-	def __init__(self,app_id, app_key,	app_secret, redirect_uri, username,	password, response_type='code'):
+	def __init__(self,app_id, app_key, app_secret, redirect_uri, username, password, response_type='code'):
 		self.app_key = app_key
 		self.app_id = app_id
 		self.app_secret = app_secret
