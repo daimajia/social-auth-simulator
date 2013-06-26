@@ -58,6 +58,7 @@ class WeiboAutoAuth(object):
 
 		#如果已经认证过，则地址中包含code=，然后直接返回
 		if('code=' in url):
+			print r.url[-32:]
 			return url[-32:]
 
 		content = response.text
@@ -74,6 +75,7 @@ class WeiboAutoAuth(object):
 
 		sure_url = 'https://api.weibo.com/2/oauth2/authorize'
 		r =  requests.post(sure_url,data = auth_data, headers = headers)
+		print r.url[-32:]
 		return r.url[-32:]
 
 	def get_access_token(self):

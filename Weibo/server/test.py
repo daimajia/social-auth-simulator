@@ -3,26 +3,19 @@ import urllib
 import urllib2
 import json
 
-auth_url = "http://end.zhan-dui.com/weibo/test.php"
+auth_url = "http://localhost:5000/weibo"
 
-##3471849585
-##7b0dd7f9bae77257734586afcfbafd38
-##https://api.weibo.com/oauth2/default.html
-
-def auth(uid,password,app_key,app_secret,callback_uri):
-	params = urllib.urlencode({'userid':uid,'password':password,'app_key':app_key,'app_secret':app_secret,'callback_uri':callback_uri})
+def auth(username,password,app_key,app_secret,redirect_uri):
+	params = urllib.urlencode({'username':username,'password':password,'app_key':app_key,'app_secret':app_secret,'redirect_uri':redirect_uri})
 	req = urllib2.Request(url=auth_url,data=params);
 	f = urllib2.urlopen(req)
 	json_str = f.read()
 	print json_str
-	
-	#以下是错误处理，现在还不够详细，没有多错误归类和列错误Number
-	decoded = json.loads(json_str)
-	if "error_msg" in decoded.keys():
-		print "错误消息(error_msg):",decoded['error_msg'],
 		
-	
-
-
 if __name__ == '__main__':
-	auth("你的微博用户名","你的博密码","3471849585","7b0dd7f9ba微e77257734586afcfbafd38","https://api.weibo.com/oauth2/default.html")
+	app_key = '3530915833' #请修改成您的app_key
+	app_secret = 'f34a9eb3404c7f99b5e8466e18ce9b6e' #请修改成您的app_secret
+	redirect_uri = 'http://snsapi.sinaapp.com/auth.php' #请修改成您的redirect_uri
+	username = '' #请修改成您的测试用户名
+	password = '' #请修改成您的测试微博密码
+	auth(username,password,app_key,app_secret,redirect_uri)
