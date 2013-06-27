@@ -58,7 +58,6 @@ class WeiboAutoAuth(object):
 
 		#如果已经认证过，则地址中包含code=，然后直接返回
 		if('code=' in url):
-			print r.url[-32:]
 			return url[-32:]
 
 		content = response.text
