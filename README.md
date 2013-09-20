@@ -42,6 +42,9 @@ print api.get_access_token()
 
 我想你一定有些担心，你的程序语言不是python，没有关系，我还提供了php/server端认证，只要你把php文件部署在server端，不论什么语言，构造query数据发送到服务器，自动化认证和授权就交给服务器吧，最终像获取网页数据一样得到`accesss_token`的`json`数据。
 
+并且 `http://autoauth.sinaapp.com/weibo` 长期服务，您可放心使用，使用方式，如下图：
+
+![](http://ww4.sinaimg.cn/mw690/610dc034jw1e8tbude577j20jt0ggdhn.jpg)
 
 ###还在犹豫什么？投入使用吧！
 
