@@ -4,6 +4,10 @@ import urllib2
 import cookielib
 import requests
 from bs4 import BeautifulSoup
+import re
+
+
+
 
 class WeiboAutoAuth(object):
 	'''
@@ -22,9 +26,9 @@ class WeiboAutoAuth(object):
 		return base_url % (self.app_key,self.redirect_uri)
 
 	def get_code(self):
-
 		print self.__get_authorize_url()
 		# step1: 打开登陆框，并且记录cookies
+
 
 		open_login_form = requests.get(self.__get_authorize_url())
 		open_login_form_html = open_login_form.text
@@ -53,12 +57,17 @@ class WeiboAutoAuth(object):
 		}
 
 		auth_url = 'https://api.weibo.com/oauth2/authorize'
-		response = requests.post(auth_url,data = login_form_data,headers=headers)
-		url = response.url
+		try:
 
-		#如果已经认证过，则地址中包含code=，然后直接返回
-		if('code=' in url):
-			return url[-32:]
+			response = requests.post(auth_url,data = login_form_data,headers=headers)
+			url = response.url
+			#如果已经认证过，则地址中包含code=，然后直接返回
+			if('code=' in url):
+				return url[-32:]
+		except Exception,e:
+			auth_code=re.findall('code=([^\s]*)',str(e))
+			if auth_code!=[]:
+				return auth_code
 
 		content = response.text
 
@@ -70,12 +79,17 @@ class WeiboAutoAuth(object):
 			value = input.get('value')
 			auth_data[input.get('name')] = unicode(value).encode('utf-8')
 
-		# print auth_data
+		print auth_data
 
 		sure_url = 'https://api.weibo.com/2/oauth2/authorize'
-		r =  requests.post(sure_url,data = auth_data, headers = headers)
-		print r.url[-32:]
-		return r.url[-32:]
+		try:
+			r =  requests.post(sure_url,data = auth_data, headers = headers)
+
+			print r.url[-32:]
+			return r.url[-32:]
+		except Exception,e:
+			auth_code=re.findall('code=([^\s]*)',str(e))
+			return auth_code
 
 	def get_access_token(self):
 		postdata = {
